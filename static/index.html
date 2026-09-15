@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>AI Career Guide</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f7fb;
+
+    color: #222;
+}
+
+header {
+
+    background: #123c69;
+
+    color: white;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+header h1 {
+
+    margin: 0;
+}
+
+.container {
+
+    width: 90%;
+
+    max-width: 950px;
+
+    margin: 30px auto;
+}
+
+.card {
+
+    background: white;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,0.08);
+}
+
+h2 {
+
+    color: #123c69;
+
+    margin-top: 0;
+}
+
+label {
+
+    display: block;
+
+    margin-top: 15px;
+
+    margin-bottom: 6px;
+
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+}
+
+textarea {
+
+    resize: vertical;
+
+    min-height: 110px;
+}
+
+button {
+
+    width: 100%;
+
+    border: none;
+
+    padding: 14px;
+
+    margin-top: 20px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+button:hover {
+
+    opacity: 0.9;
+}
+
+.main-button {
+
+    background: #123c69;
+
+    color: white;
+}
+
+.ai-button {
+
+    background: #198754;
+
+    color: white;
+}
+
+.roadmap-button {
+
+    background: #6f42c1;
+
+    color: white;
+}
+
+.skill-button {
+
+    background: #d97706;
+
+    color: white;
+}
+
+.resource-button {
+
+    background: #0d6efd;
+
+    color: white;
+}
+
+.result,
+.ai-result,
+.roadmap-result,
+.skill-result,
+.resource-result {
+
+    margin-top: 20px;
+
+    padding: 18px;
+
+    border-radius: 8px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+}
+
+.result {
+
+    background: #eef5ff;
+
+    display: none;
+}
+
+.ai-result {
+
+    background: #eefaf3;
+}
+
+.roadmap-result {
+
+    background: #f4efff;
+}
+
+.skill-result {
+
+    background: #fff7e6;
+}
+
+.resource-result {
+
+    background: #eaf3ff;
+}
+
+.loading {
+
+    display: none;
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+.admin-link {
+
+    text-align: center;
+
+    margin: 30px;
+}
+
+.admin-link a {
+
+    color: #123c69;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>
+🤖 AI Career Guide
+</h1>
+
+<p>
+Personalized AI-powered career guidance
+</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- STUDENT PROFILE -->
+
+<div class="card">
+
+<h2>
+🎓 Student Profile
+</h2>
+
+
+<label>Name</label>
+
+<input
+    type="text"
+    id="name"
+    placeholder="Enter your name"
+>
+
+
+<label>Education</label>
+
+<input
+    type="text"
+    id="education"
+    placeholder="Example: BCA"
+>
+
+
+<label>Skills</label>
+
+<input
+    type="text"
+    id="skills"
+    placeholder="Example: Python, SQL, HTML"
+>
+
+
+<label>Interests</label>
+
+<input
+    type="text"
+    id="interest"
+    placeholder="Example: Software Development"
+>
+
+
+<label>Career Goal</label>
+
+<input
+    type="text"
+    id="goal"
+    placeholder="Example: Java Backend Developer"
+>
+
+
+<label>Preferred Language</label>
+
+<select id="language">
+
+<option value="English">
+English
+</option>
+
+<option value="Tamil">
+Tamil
+</option>
+
+<option value="Hindi">
+Hindi
+</option>
+
+</select>
+
+
+<button
+    class="main-button"
+    onclick="getRecommendation()"
+>
+
+🎯 Get Career Recommendation
+
+</button>
+
+</div>
+
+
+
+<!-- CAREER RECOMMENDATION -->
+
+<div class="card">
+
+<h2>
+🎯 Career Recommendation
+</h2>
+
+<div
+    id="recommendation"
+    class="result"
+></div>
+
+</div>
+
+
+
+<!-- AI GUIDANCE -->
+
+<div class="card">
+
+<h2>
+🤖 AI Career Guidance
+</h2>
+
+<button
+    class="ai-button"
+    onclick="getAIGuide()"
+>
+
+🤖 Get AI Career Guidance
+
+</button>
+
+
+<div
+    class="loading"
+    id="aiLoading"
+>
+
+🤖 AI is thinking...
+
+</div>
+
+
+<div
+    class="ai-result"
+    id="aiGuidance"
+    style="display:none;"
+></div>
+
+</div>
+
+
+
+<!-- ROADMAP -->
+
+<div class="card">
+
+<h2>
+🗺️ Personalized 6-Month Roadmap
+</h2>
+
+<p>
+Generate a personalized roadmap based on
+your profile.
+</p>
+
+
+<button
+    class="roadmap-button"
+    onclick="getRoadmap()"
+>
+
+🗺️ Generate My Roadmap
+
+</button>
+
+
+<div
+    class="loading"
+    id="roadmapLoading"
+>
+
+🧠 Creating your roadmap...
+
+</div>
+
+
+<div
+    class="roadmap-result"
+    id="roadmapResult"
+    style="display:none;"
+></div>
+
+</div>
+
+
+
+<!-- SKILL GAP -->
+
+<div class="card">
+
+<h2>
+📊 AI Skill-Gap Analysis
+</h2>
+
+<p>
+Find the skills you already have and the skills
+you need for your target career.
+</p>
+
+
+<button
+    class="skill-button"
+    onclick="getSkillGap()"
+>
+
+📊 Analyze My Skill Gap
+
+</button>
+
+
+<div
+    class="loading"
+    id="skillLoading"
+>
+
+🔍 Analyzing your skills...
+
+</div>
+
+
+<div
+    class="skill-result"
+    id="skillResult"
+    style="display:none;"
+></div>
+
+</div>
+
+
+
+<!-- LEARNING RESOURCES -->
+
+<div class="card">
+
+<h2>
+📚 AI Learning Resources
+</h2>
+
+<p>
+Get personalized learning resources based on
+your career goal and skill gaps.
+</p>
+
+
+<button
+    class="resource-button"
+    onclick="getResources()"
+>
+
+📚 Recommend Learning Resources
+
+</button>
+
+
+<div
+    class="loading"
+    id="resourceLoading"
+>
+
+🔎 Finding useful learning resources...
+
+</div>
+
+
+<div
+    class="resource-result"
+    id="resourceResult"
+    style="display:none;"
+></div>
+
+</div>
+
+
+
+<!-- CHATBOT -->
+
+<div class="card">
+
+<h2>
+💬 Ask AI Career Guide
+</h2>
+
+
+<textarea
+    id="chatMessage"
+    placeholder="Ask something like: What projects should I build for a Java developer job?"
+></textarea>
+
+
+<button
+    class="ai-button"
+    onclick="sendChat()"
+>
+
+🤖 Ask AI
+
+</button>
+
+
+<div
+    class="loading"
+    id="chatLoading"
+>
+
+🤖 AI is thinking...
+
+</div>
+
+
+<div
+    class="ai-result"
+    id="chatResponse"
+    style="display:none;"
+></div>
+
+</div>
+
+
+
+<!-- ADMIN -->
+
+<div class="admin-link">
+
+<a href="/admin.html">
+
+📊 Open Admin Dashboard
+
+</a>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+// ==========================================
+// STUDENT DATA
+// ==========================================
+
+function getStudentData() {
+
+return {
+
+name:
+document.getElementById("name").value,
+
+education:
+document.getElementById("education").value,
+
+skills:
+document.getElementById("skills").value,
+
+interest:
+document.getElementById("interest").value,
+
+goal:
+document.getElementById("goal").value,
+
+language:
+document.getElementById("language").value
+
+};
+
+}
+
+
+
+// ==========================================
+// RECOMMENDATION
+// ==========================================
+
+async function getRecommendation() {
+
+const data = getStudentData();
+
+const resultBox =
+document.getElementById("recommendation");
+
+resultBox.style.display = "block";
+
+resultBox.innerText =
+"🔄 Finding your best career...";
+
+
+try {
+
+const response =
+await fetch("/api/recommend", {
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify(data)
+
+});
+
+
+const result =
+await response.json();
+
+
+if (!response.ok) {
+
+throw new Error(
+result.detail ||
+"Recommendation failed"
+);
+
+}
+
+
+resultBox.innerHTML = `
+
+<h3>
+🎯 ${result.recommended_career}
+</h3>
+
+<p>
+${result.reason}
+</p>
+
+`;
+
+}
+
+catch (error) {
+
+resultBox.innerText =
+"❌ Error: " +
+error.message;
+
+}
+
+}
+
+
+
+// ==========================================
+// AI GUIDANCE
+// ==========================================
+
+async function getAIGuide() {
+
+const data = getStudentData();
+
+const loading =
+document.getElementById("aiLoading");
+
+const resultBox =
+document.getElementById("aiGuidance");
+
+loading.style.display = "block";
+
+resultBox.style.display = "none";
+
+
+try {
+
+const response =
+await fetch("/api/ai-guide", {
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify(data)
+
+});
+
+
+const result =
+await response.json();
+
+
+if (!response.ok || !result.success) {
+
+throw new Error(
+result.error ||
+"AI guidance failed"
+);
+
+}
+
+
+resultBox.innerText =
+result.ai_guidance;
+
+resultBox.style.display =
+"block";
+
+}
+
+catch (error) {
+
+resultBox.innerText =
+"❌ Error: " +
+error.message;
+
+resultBox.style.display =
+"block";
+
+}
+
+finally {
+
+loading.style.display =
+"none";
+
+}
+
+}
+
+
+
+// ==========================================
+// ROADMAP
+// ==========================================
+
+async function getRoadmap() {
+
+const data = getStudentData();
+
+const loading =
+document.getElementById("roadmapLoading");
+
+const resultBox =
+document.getElementById("roadmapResult");
+
+loading.style.display = "block";
+
+resultBox.style.display = "none";
+
+
+try {
+
+const response =
+await fetch("/api/roadmap", {
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify(data)
+
+});
+
+
+const result =
+await response.json();
+
+
+if (!response.ok || !result.success) {
+
+throw new Error(
+result.error ||
+"Roadmap generation failed"
+);
+
+}
+
+
+resultBox.innerText =
+result.roadmap;
+
+resultBox.style.display =
+"block";
+
+}
+
+catch (error) {
+
+resultBox.innerText =
+"❌ Error: " +
+error.message;
+
+resultBox.style.display =
+"block";
+
+}
+
+finally {
+
+loading.style.display =
+"none";
+
+}
+
+}
+
+
+
+// ==========================================
+// SKILL GAP
+// ==========================================
+
+async function getSkillGap() {
+
+const data = getStudentData();
+
+const loading =
+document.getElementById("skillLoading");
+
+const resultBox =
+document.getElementById("skillResult");
+
+loading.style.display = "block";
+
+resultBox.style.display = "none";
+
+
+try {
+
+const response =
+await fetch("/api/skill-gap", {
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify(data)
+
+});
+
+
+const result =
+await response.json();
+
+
+if (!response.ok || !result.success) {
+
+throw new Error(
+result.error ||
+"Skill-gap analysis failed"
+);
+
+}
+
+
+resultBox.innerText =
+result.skill_gap;
+
+resultBox.style.display =
+"block";
+
+}
+
+catch (error) {
+
+resultBox.innerText =
+"❌ Error: " +
+error.message;
+
+resultBox.style.display =
+"block";
+
+}
+
+finally {
+
+loading.style.display =
+"none";
+
+}
+
+}
+
+
+
+// ==========================================
+// LEARNING RESOURCES
+// ==========================================
+
+async function getResources() {
+
+const data = getStudentData();
+
+const loading =
+document.getElementById(
+"resourceLoading"
+);
+
+const resultBox =
+document.getElementById(
+"resourceResult"
+);
+
+loading.style.display =
+"block";
+
+resultBox.style.display =
+"none";
+
+
+try {
+
+const response =
+await fetch(
+"/api/resources",
+{
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify(data)
+
+}
+
+);
+
+
+const result =
+await response.json();
+
+
+if (
+!response.ok ||
+!result.success
+) {
+
+throw new Error(
+result.error ||
+"Resource recommendation failed"
+);
+
+}
+
+
+resultBox.innerText =
+result.resources;
+
+resultBox.style.display =
+"block";
+
+}
+
+catch (error) {
+
+resultBox.innerText =
+"❌ Error: " +
+error.message;
+
+resultBox.style.display =
+"block";
+
+}
+
+finally {
+
+loading.style.display =
+"none";
+
+}
+
+}
+
+
+
+// ==========================================
+// CHATBOT
+// ==========================================
+
+async function sendChat() {
+
+const message =
+document
+.getElementById(
+"chatMessage"
+)
+.value;
+
+
+const language =
+document
+.getElementById(
+"language"
+)
+.value;
+
+
+if (!message.trim()) {
+
+alert(
+"Please enter your question."
+);
+
+return;
+
+}
+
+
+const loading =
+document.getElementById(
+"chatLoading"
+);
+
+
+const resultBox =
+document.getElementById(
+"chatResponse"
+);
+
+
+loading.style.display =
+"block";
+
+resultBox.style.display =
+"none";
+
+
+try {
+
+const response =
+await fetch(
+"/api/chat",
+{
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify({
+
+message:
+message,
+
+language:
+language
+
+})
+
+}
+
+);
+
+
+const result =
+await response.json();
+
+
+if (
+!response.ok ||
+!result.success
+) {
+
+throw new Error(
+result.error ||
+"Chat request failed"
+);
+
+}
+
+
+resultBox.innerText =
+result.reply;
+
+resultBox.style.display =
+"block";
+
+}
+
+catch (error) {
+
+resultBox.innerText =
+"❌ Error: " +
+error.message;
+
+resultBox.style.display =
+"block";
+
+}
+
+finally {
+
+loading.style.display =
+"none";
+
+}
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
